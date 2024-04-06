@@ -21,7 +21,7 @@ terraform {
 
 provider "aws" {
   region  = "ap-southeast-1"
-  profile = "720133173047_NetworkAdministrator"
+#   profile = "720133173047_NetworkAdministrator"
 }
 
 # "resource_type" "resource_name"
