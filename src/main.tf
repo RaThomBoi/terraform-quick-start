@@ -67,7 +67,7 @@ resource "aws_route_table_association" "public_subnet_association" {
 
 resource "aws_instance" "app_server" {
   subnet_id                   = aws_subnet.public_subnet.id
-  ami                         = "ami-0fd77db8c27ba5cc5"
+  ami                         = "ami-0910e4162f162c238"
   instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
