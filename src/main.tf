@@ -65,11 +65,40 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
+resource "aws_security_group" "web_server_sg" {
+  name        = "web-server-sg"
+  description = "Security group for web servers"
+  vpc_id      = aws_vpc.default_vpc.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
 resource "aws_instance" "app_server" {
   subnet_id                   = aws_subnet.public_subnet.id
   ami                         = "ami-0910e4162f162c238"
   instance_type               = "t2.micro"
   associate_public_ip_address = true
+  security_groups = [aws_security_group.web_server_sg.id]
   tags = {
     Name = var.instance_name
   }
