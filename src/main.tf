@@ -1,12 +1,12 @@
 terraform {
 
-# store credential e.g. tfstate in Terraform cloud is a best practice of security.
-    cloud {
-      organization = "JessadaSrm_Org"
-      workspaces {
-        name = "terraform-quick-start"
-      }
+#   store credential e.g. tfstate in Terraform cloud is a best practice of security.
+  cloud {
+    organization = "JessadaSrm_Org"
+    workspaces {
+      name = "terraform-quick-start"
     }
+  }
 
   required_providers {
     aws = {
@@ -21,7 +21,6 @@ terraform {
 
 provider "aws" {
   region  = "ap-southeast-1"
-  profile = "720133173047_NetworkAdministrator"
 }
 
 # "resource_type" "resource_name"
@@ -67,9 +66,9 @@ resource "aws_route_table_association" "public_subnet_association" {
 }
 
 resource "aws_instance" "app_server" {
-  subnet_id     = aws_subnet.public_subnet.id
-  ami           = "ami-0fd77db8c27ba5cc5"
-  instance_type = "t2.micro"
+  subnet_id                   = aws_subnet.public_subnet.id
+  ami                         = "ami-0fd77db8c27ba5cc5"
+  instance_type               = "t2.micro"
   associate_public_ip_address = true
   tags = {
     Name = var.instance_name
