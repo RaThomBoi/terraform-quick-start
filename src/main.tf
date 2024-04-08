@@ -66,7 +66,7 @@ resource "aws_route_table_association" "public_subnet_association" {
 }
 
 resource "aws_security_group" "web_server_sg" {
-  name        = "web-server-sg"
+  name        = "web-security-group"
   description = "Security group for web servers"
   vpc_id      = aws_vpc.default_vpc.id
 
@@ -93,7 +93,7 @@ resource "aws_security_group" "web_server_sg" {
 }
 
 
-resource "aws_instance" "app_server" {
+resource "aws_instance" "web_server" {
   subnet_id                   = aws_subnet.public_subnet.id
   ami                         = "ami-0910e4162f162c238"
   instance_type               = "t2.micro"
