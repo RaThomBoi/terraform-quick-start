@@ -1,12 +1,12 @@
 terraform {
 
 #   store credential e.g. tfstate in Terraform cloud is a best practice of security.
-  cloud {
-    organization = "JessadaSrm_Org"
-    workspaces {
-      name = "terraform-quick-start"
-    }
-  }
+  # cloud {
+  #   organization = "terraform_cloud_Org_name"
+  #   workspaces {
+  #     name = "workspace_name
+  #   }
+  # }
 
   required_providers {
     aws = {
@@ -20,6 +20,7 @@ terraform {
 
 
 provider "aws" {
+  # profile = "aws_account_profile_name"
   region  = "ap-southeast-1"
 }
 
