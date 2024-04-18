@@ -96,12 +96,12 @@ resource "aws_security_group" "web_server_sg" {
 
 resource "aws_instance" "web_server" {
   subnet_id                   = aws_subnet.public_subnet.id
-  ami                         = "ami-0910e4162f162c238"
-  instance_type               = "t2.micro"
+  ami                         = var.INSTANCE_AMI
+  instance_type               = var.INSTANCE_TYPE
   associate_public_ip_address = true
   security_groups = [aws_security_group.web_server_sg.id]
   tags = {
-    Name = var.instance_name
+    Name = var.INSTANCE_NAME
   }
 }
 
