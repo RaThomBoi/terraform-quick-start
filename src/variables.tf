@@ -3,3 +3,16 @@ variable "instance_name" {
   type        = string
   default     = "Web Server"
 }
+
+variable "INSTANCE_NAME" {
+  type = string
+  default = ""
+}
+variable "INSTANCE_TYPE" {
+  type = string
+  default = ""
+}
+variable "INSTANCE_AMI" {
+  type = string
+  default = ""
+}
