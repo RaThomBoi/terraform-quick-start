@@ -95,7 +95,7 @@ resource "aws_security_group" "web_server_sg" {
 }
 
 
-# you can use either variables from cloud settings or variable.tf.
+# you can use either variables from cloud settings or variable.tf. .
 resource "aws_instance" "web_server" {
   subnet_id                   = aws_subnet.public_subnet.id
   ami                         = var.INSTANCE_AMI
