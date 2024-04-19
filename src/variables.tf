@@ -4,6 +4,8 @@ variable "instance_name" {
   default     = "Web Server"
 }
 
+
+# for use Terraform Cloud env var
 variable "INSTANCE_NAME" {
   type = string
   default = ""
