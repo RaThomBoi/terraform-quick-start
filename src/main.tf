@@ -20,6 +20,7 @@ terraform {
 }
 
 
+# 
 provider "aws" {
   # profile = "aws_account_profile_name"
   region  = "ap-southeast-1"
