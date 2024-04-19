@@ -7,6 +7,7 @@ terraform {
   #     name = "workspace_name
   #   }
   # }
+  #
 
   required_providers {
     aws = {
@@ -19,6 +20,7 @@ terraform {
 }
 
 
+# 
 provider "aws" {
   # profile = "aws_account_profile_name"
   region  = "ap-southeast-1"
@@ -94,14 +96,15 @@ resource "aws_security_group" "web_server_sg" {
 }
 
 
+# you can use either variables from cloud settings or variable.tf. .
 resource "aws_instance" "web_server" {
   subnet_id                   = aws_subnet.public_subnet.id
-  ami                         = "ami-0910e4162f162c238"
-  instance_type               = "t2.micro"
+  ami                         = var.INSTANCE_AMI
+  instance_type               = var.INSTANCE_TYPE
   associate_public_ip_address = true
   security_groups = [aws_security_group.web_server_sg.id]
   tags = {
-    Name = var.instance_name
+    Name = var.INSTANCE_NAME
   }
 }
 
